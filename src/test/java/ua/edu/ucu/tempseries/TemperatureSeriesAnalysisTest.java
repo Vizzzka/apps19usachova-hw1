@@ -119,6 +119,7 @@ public class TemperatureSeriesAnalysisTest {
 
         assertEquals(expResultMin, actualResultMin, delta);
         assertEquals(expResultMax, actualResultMax, delta);
+
     }
 
     @Test
@@ -133,6 +134,7 @@ public class TemperatureSeriesAnalysisTest {
 
         // compare expected result with actual result
         assertEquals(expResult, actualResult, delta);
+
     }
 
     @Test(expected = IllegalArgumentException.class)

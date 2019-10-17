@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {
 
     private double[] temperatureSeries;
+    private static final double minitemp = -273;
 
     private void is_empty() {
         if (this.temperatureSeries.length == 0) {
@@ -134,7 +135,7 @@ public class TemperatureSeriesAnalysis {
 
     public void setTemperatureSeries(double[] temperatureSeries) {
         for (double temperatureSery : temperatureSeries)
-            if (temperatureSery < -273)
+            if (temperatureSery < this.minitemp)
                 throw new InputMismatchException();
         this.temperatureSeries = temperatureSeries;
     }

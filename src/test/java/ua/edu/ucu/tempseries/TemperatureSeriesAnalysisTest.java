@@ -165,6 +165,40 @@ public class TemperatureSeriesAnalysisTest {
         double[] expResult = new double[0];
 
         // call tested method
+        double[] actualResult = seriesAnalysis.findTempsGreaterThen(100.0);
+
+        // compare expected result with actual result
+        assertArrayEquals(expResult, actualResult, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testGreaterThanValueEmptyArray() {
+        double[] temperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        // expect exception here
+        seriesAnalysis.findTempClosestToValue(0);
+    }
+
+    @Test
+    public void testGreaterThanValue() {
+        double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0, 7.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double[] expResult = {5.0, 7.0};
+
+        double[] actualResult = seriesAnalysis.findTempsGreaterThen(5.0);
+
+        assertArrayEquals(expResult, actualResult, delta);
+    }
+
+    @Test
+    public void testGreaterThanValueWithoutGreater() {
+        // setup input data and expected result
+        double[] temperatureSeries = {-1.0, 2.0, 99.4};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double[] expResult = new double[0];
+
+        // call tested method
         double[] actualResult = seriesAnalysis.findTempsLessThen(-2.0);
 
         // compare expected result with actual result

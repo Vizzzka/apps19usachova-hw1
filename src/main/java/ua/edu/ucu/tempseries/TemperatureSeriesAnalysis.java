@@ -130,13 +130,15 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] getTemperatureSeries() {
-        return temperatureSeries;
+        return this.temperatureSeries;
     }
 
     public void setTemperatureSeries(double[] temperatureSeries) {
         for (double temperatureSery : temperatureSeries)
-            if (temperatureSery < this.minitemp)
+            if (temperatureSery < minitemp) {
                 throw new InputMismatchException();
-        this.temperatureSeries = temperatureSeries;
+            }
+        this.temperatureSeries = new double[temperatureSeries.length];
+        System.arraycopy(temperatureSeries, 0, this.temperatureSeries, 0, temperatureSeries.length);
     }
 }
